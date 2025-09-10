@@ -29,6 +29,11 @@ git clone https://github.com/your-username/mini_imggen_numpy_lib.git
 cd mini_imggen_numpy_lib
 pip install .
 ```
+or
+
+```bash
+pip install mini-imggen-numpy-lib
+```
 
 **Requirements**:
 - Python 3.8+
