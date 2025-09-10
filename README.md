@@ -1,7 +1,5 @@
 # mini_imggen_numpy_lib
 
-THE PROJECT IS NOT FINISHED, PLEASE WAIT A FEW HOURS
-
 A lightweight educational Python library for toy **image & text generation** using **NumPy only**. This project is a refactored version of a Tkinter-based demo, now provided as a clean, reusable library without GUI dependencies.
 
 ⚠️ **Note**: This is a **toy project** — it is not designed for production use. The models are extremely simple and intended for experimentation, learning, and fun.
