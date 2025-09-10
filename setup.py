@@ -7,7 +7,7 @@ version="0.1.0",
 description="A lightweight educational Python library for toy image & text generation using NumPy only.",
 author="Léo",
 url="https://github.com/Leo62-glitch/mini_imggen_numpy_lib",
-packages=find_packages(),
+py_modules=["mini_imggen_numpy_lib"],
 install_requires=[
 "numpy",
 "pillow"
@@ -18,4 +18,5 @@ classifiers=[
 "License :: OSI Approved :: MIT License",
 "Operating System :: OS Independent",
 ],
+
 )
