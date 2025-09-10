@@ -27,7 +27,7 @@ Clone the repository and install dependencies:
 ```bash
 git clone https://github.com/your-username/mini_imggen_numpy_lib.git
 cd mini_imggen_numpy_lib
-pip install -e .
+pip install .
 ```
 
 **Requirements**:
@@ -37,88 +37,54 @@ pip install -e .
 
 ---
 
-## 🏁 Quickstart
+## 🏁 Usage Examples
 
-### 1. Train on an image dataset
-
+### Train on a folder of images (filenames are used as text prompts)
 ```python
 from mini_imggen_numpy_lib import train_model
 
 train_model(
-    data_dir="data/images",   # folder with images
-    out_dir="ckpt",           # save directory for model & vocab
+    'data/images',   # folder containing images
+    'ckpt',          # output directory for model and vocab
     size=32,
     epochs=3,
     batch_size=32,
     lr=0.02,
-    log_cb=print
+    log_cb=lambda s: print(s)
 )
 ```
 
-### 2. Generate an image
-
+### Generate an image from a trained model
 ```python
 from mini_imggen_numpy_lib import generate_image_from_model
 
-output = generate_image_from_model(
-    model_dir="ckpt",
-    prompt="striped cat",
-    out_path="out.png",
+generate_image_from_model(
+    'ckpt',
+    'striped cat',
+    'out.png',
     size=32,
-    mode="quick"
+    mode='quick'
 )
-print("Image saved to", output)
 ```
 
-### 3. Train on text dataset
-
-Prepare a `texts.json` file:
-```json
-{
-  "texts": [
-    "the cat sat on the mat",
-    "a small striped tiger",
-    "a dog chased the ball"
-  ]
-}
-```
-
-Train:
+### Train a text model from JSON `{ "texts": ["a sentence", ...] }`
 ```python
 from mini_imggen_numpy_lib import train_text_model
 
 train_text_model(
-    dataset_json="texts.json",
-    out_dir="ckpt_text",
+    'texts.json',
+    'ckpt_text',
     epochs=3,
     log_cb=print
 )
 ```
 
-### 4. Generate text
-
+### Generate text
 ```python
 from mini_imggen_numpy_lib import generate_text_from_model
 
-print(generate_text_from_model("ckpt_text", "hello", length=40))
+print(generate_text_from_model('ckpt_text', 'hello', length=40))
 ```
-
----
-
-## 📖 API Overview
-
-- **Text utilities**
-  - `tokenize_text(s: str) -> List[str]`
-  - `TextVocab` — build, encode, decode, save, load
-
-- **Image utilities**
-  - `load_and_preprocess_image(path: str, size: int)`
-  - `image_to_tokens(img_arr)` / `tokens_to_image(tokens, size)`
-
-- **Model & Training**
-  - `ARBigramText` — toy autoregressive bigram
-  - `train_model()` / `generate_image_from_model()`
-  - `train_text_model()` / `generate_text_from_model()`
 
 ---
 
